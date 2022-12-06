@@ -1,3 +1,9 @@
+##### Author #####
+# Name: Ayush Gupta
+# Contact: ayush881gupta@gmail.com
+##################
+
+
 # Firewall
 resource "aws_networkfirewall_firewall" "firewall" {
 

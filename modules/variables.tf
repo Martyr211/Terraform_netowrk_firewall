@@ -1,3 +1,8 @@
+##### Author #####
+# Name: Ayush Gupta
+# Contact: ayush881gupta@gmail.com
+##################
+
 variable "name" {
   type        = string
   description = "A friendly name of the firewall."

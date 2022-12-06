@@ -1,3 +1,8 @@
+##### Author #####
+# Name: Ayush Gupta
+# Contact: ayush881gupta@gmail.com
+##################
+
 data "aws_vpc" "default" {
   default = true #To capture data about default VPC
 }

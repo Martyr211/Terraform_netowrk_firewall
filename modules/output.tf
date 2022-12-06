@@ -1,3 +1,9 @@
+##### Author #####
+# Name: Ayush Gupta
+# Contact: ayush881gupta@gmail.com
+##################
+
+
 output "id" {
   description = "The ID that identifies the firewall."
   value       = var.enabled && var.create_network_firewall ? aws_networkfirewall_firewall.firewall[0].id : null
