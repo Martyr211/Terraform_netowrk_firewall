@@ -201,9 +201,10 @@ resource "aws_networkfirewall_rule_group" "stateful_rule_group" {
 
 # Policy
 resource "aws_networkfirewall_firewall_policy" "policy" {
+  
+  depends_on = [aws_networkfirewall_rule_group.stateless_rule_group, aws_networkfirewall_rule_group.stateful_rule_group]
 
   count = var.enabled ? 1 : 0
-
   name = var.firewall_policy_name == null ? "${var.name}-policy" : var.firewall_policy_name
 
   firewall_policy {
@@ -227,15 +228,15 @@ resource "aws_networkfirewall_firewall_policy" "policy" {
       }
     }
 
+    #Stateful Managed rule group reference
     dynamic "stateful_rule_group_reference" {
       for_each = var.stateful_managed_rule_groups_arn
       content {         
         resource_arn = lookup(stateful_rule_group_reference.value, "resource_arn")        
+      }
     }
   }
-}
 
   tags = var.tags
 
-  depends_on = [aws_networkfirewall_rule_group.stateless_rule_group, aws_networkfirewall_rule_group.stateful_rule_group]
 }
